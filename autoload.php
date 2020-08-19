@@ -7,3 +7,5 @@ function load($className){
 }
 
 spl_autoload_register("load");
+
+require_once "router.php";
