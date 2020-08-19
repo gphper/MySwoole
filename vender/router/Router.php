@@ -25,9 +25,7 @@ class Router
             throw new \Exception("该方法需要输入两个参数，您输入了" . count($arguments) . "个");
         }
 
-        self::$get_coll[$arguments[0]] = [
-            $name => $arguments[1]
-        ];
+        self::$get_coll[$arguments[0]][$name] = $arguments[1];
     }
 
     public static function getAll()
