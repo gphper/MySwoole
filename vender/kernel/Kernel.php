@@ -1,7 +1,6 @@
 <?php
 namespace vender\kernel;
 
-use ReflectionClass;
 use vender\router\Router;
 
 class Kernel{
@@ -18,12 +17,9 @@ class Kernel{
             return;
         }
         list($controller,$action) = explode("@",$controller);
-        //使用反射实例化类
-//        $ref = new ReflectionClass("app\\Http\\Controller\\".$controller);
-//        $controller_instance = $ref->newInstance();
-//        call_user_func_array([$controller_instance,$action],[$request,$response]);
         $controller = "app\\Http\\Controller\\".$controller;
-        (new $controller)->$action($request,$response);
+        $data = (new $controller)->$action($request,$response);
+        $response->end($data);
     }
 
 }

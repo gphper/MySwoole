@@ -9,3 +9,4 @@ function load($className){
 spl_autoload_register("load");
 
 require_once "router.php";
+require_once "app/Libraries/helper.php";

@@ -41,10 +41,10 @@ class Router
             if (isset(self::$get_coll[$name][$method])) {
                 return self::$get_coll[$name][$method];
             } else {
-                throw new \Exception("method not allow");
+                throw new \Exception("method not allow",501);
             }
         } else {
-            throw new \Exception("404 not fond");
+            throw new \Exception("url not fond",404);
         }
     }
 }
