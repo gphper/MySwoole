@@ -6,15 +6,15 @@ use vender\container\Container;
  */
 if(!function_exists("response_json")){
     function response_json($data){
-        $response = Container::getInstance()->make("\\vender\\container\\Response");
-        $response->header("Content-Type", "application/json; charset=utf-8");
+        $response = Container::getInstance()->make("\\vender\\contract\\ResponseInterface");
+        $response->setHeader("Content-Type", "application/json; charset=utf-8");
         return json_encode($data);
     }
 }
 
 if(!function_exists("request")){
     function request($key,$default_value){
-        $request = Container::getInstance()->make("\\vender\\container\\Request");
+        $request = Container::getInstance()->make("\\vender\\contract\\RequestInterface");
         if($request->server["request_method"] == "GET"){
             return isset($request->get[$key])?$request->get[$key]:$default_value;
         }else{

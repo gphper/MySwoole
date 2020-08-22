@@ -6,10 +6,10 @@
  * Time: 11:11
  */
 
-namespace vender\container;
+namespace vender\contract;
 
 
-interface Response
+interface ResponseInterface
 {
 
 }

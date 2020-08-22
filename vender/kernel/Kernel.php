@@ -1,11 +1,13 @@
 <?php
 namespace vender\kernel;
 
+use vender\http\Request;
+use vender\http\Response;
 use vender\router\Router;
 
 class Kernel{
 
-    public function process($request,$response){
+    public function process(Request $request,Response $response){
         //获取控制器的类和方法
         $request_uri = $request->server['request_uri'];
         $method = $request->server['request_method'];
@@ -13,7 +15,7 @@ class Kernel{
         list($controller,$action) = explode("@",$controller);
         $controller = "app\\Http\\Controller\\".$controller;
         $data = (new $controller)->$action($request,$response);
-        $response->end($data);
+        $response->send($data);
     }
 
 }
