@@ -9,13 +9,7 @@ class Kernel{
         //获取控制器的类和方法
         $request_uri = $request->server['request_uri'];
         $method = $request->server['request_method'];
-        try{
-            $controller = Router::getRoute($request_uri,$method);
-        }catch (\Exception $e){
-            $response->status(404);
-            $response->end("<p>".$e->getMessage()."</p>");
-            return;
-        }
+        $controller = Router::getRoute($request_uri,$method);
         list($controller,$action) = explode("@",$controller);
         $controller = "app\\Http\\Controller\\".$controller;
         $data = (new $controller)->$action($request,$response);
