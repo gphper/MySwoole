@@ -12,8 +12,8 @@ $http->on('request', function ($request, $response) {
         //注册全局变量
         $container = Container::getInstance();
         $container->bind("hello", "world");
-        $container->bind("request", $request);
-        $container->bind("response", $response);
+        $container->bind("\\vender\\container\\Request", $request);
+        $container->bind("\\vender\\container\\Response", $response);
         if ($request->server['path_info'] == '/favicon.ico' || $request->server['request_uri'] == '/favicon.ico') {
             $response->end();
             return;
@@ -21,7 +21,7 @@ $http->on('request', function ($request, $response) {
         $kernel = new Kernel();
         $kernel->process($request, $response);
     } catch (\Exception $e) {
-        $response = Container::getInstance()->make("response");
+        $response = Container::getInstance()->make("\\vender\\container\\Response");
         $response->end("<p><h1>" . $e->getMessage() . "</h1><h2>" . $e->getFile() . "</h2></p>" . "</h1><h2>" . $e->getLine() . "</h2></p>");
     }
 });
