@@ -1,7 +1,8 @@
 <?php
 
-use vender\kernel\Kernel;
 use vender\container\Container;
+
+define("ROOT_DIR",__DIR__);
 
 require "./autoload.php";
 
@@ -25,10 +26,8 @@ $http->on('request', function ($request, $response) {
             return;
         }
 
-        $kernel = new Kernel();
-        $kernel->process($my_request, $my_response);
+        (new \vender\kernel\Application())->run();
     } catch (\Exception $e) {
-        $my_response = Container::getInstance()->make("\\vender\\contract\\ResponseInterface");
         $my_response->send("<p><h1>" . $e->getMessage() . "</h1><h2>" . $e->getFile() . "</h2></p>" . "</h1><h2>" . $e->getLine() . "</h2></p>");
     }
 });

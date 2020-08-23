@@ -13,21 +13,20 @@ use vender\contract\ResponseInterface;
 class AfterMiddleHandle
 {
 
-    private $middlewares = [
-        "app\Http\Middleware\AfterMiddleware"
-    ];
+    private $middlewares;
 
     private $first_obj;
 
     public function __construct()
     {
+        $this->middlewares = config("app.middlewares.after");
         $pre_obj = null;
         $next_obj = null;
-        foreach ($this->middlewares as $v){
-            if(!$pre_obj){
+        foreach ($this->middlewares as $v) {
+            if (!$pre_obj) {
                 $pre_obj = new $v;
                 $this->first_obj = $pre_obj;
-            }else{
+            } else {
                 $next_obj = new $v;
                 $pre_obj->setNextMiddleware($next_obj);
                 $pre_obj = $next_obj;

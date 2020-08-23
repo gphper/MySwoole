@@ -9,6 +9,7 @@ class MessageController{
             "username" => $username,
             "age" => 19
         ];
+
         return response_json($data);
     }
 

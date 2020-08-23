@@ -14,15 +14,13 @@ use vender\contract\RequestInterface;
 class BeforeMiddleHandle
 {
 
-    private $middlewares = [
-        "app\Http\Middleware\BeforeMiddleware",
-        "app\Http\Middleware\NextMiddleware"
-    ];
+    private $middlewares;
 
     private $first_obj;
 
     public function __construct()
     {
+        $this->middlewares = config("app.middlewares.before");
         $pre_obj = null;
         $next_obj = null;
         foreach ($this->middlewares as $v) {

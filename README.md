@@ -9,6 +9,7 @@
 - [x] **类的自动加载**
 - [x] **路由功能**
 - [x] **中间件功能**
+- [x] **读取配置文件**
 - [ ] **事件调用**
 - [ ] **异常处理**
 
@@ -16,4 +17,4 @@
 * [php自动加载类](https://www.cnblogs.com/itsuibi/p/13340368.html)
 * [路由器的实现](https://www.cnblogs.com/itsuibi/p/13532308.html)
 * [责任链模式实现中间件](https://www.cnblogs.com/itsuibi/p/13549378.html)
-
+* [使用 array_reduce 实现自定义配置文件](https://www.cnblogs.com/itsuibi/p/13551198.html)
