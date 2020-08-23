@@ -8,15 +8,12 @@
 
 namespace vender\middleware;
 
+use vender\contract\ResponseInterface;
 
-use vender\contract\RequestInterface;
-
-class MiddleHandle
+class AfterMiddleHandle
 {
 
     private $middlewares = [
-        "app\Http\Middleware\BeforeMiddleware",
-        "app\Http\Middleware\NextMiddleware",
         "app\Http\Middleware\AfterMiddleware"
     ];
 
@@ -38,9 +35,9 @@ class MiddleHandle
         }
     }
 
-    public function dispatch(RequestInterface $request)
+    public function dispatch(ResponseInterface $response)
     {
-        $this->first_obj->handle($request);
+        $this->first_obj->handle($response);
     }
 
 }

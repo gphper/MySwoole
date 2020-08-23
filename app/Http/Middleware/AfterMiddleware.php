@@ -8,17 +8,18 @@
 
 namespace app\Http\Middleware;
 
-use vender\contract\middleware\BaseMiddleware;
+use vender\contract\middleware\AfterBaseMiddleware;
 use vender\contract\RequestInterface;
+use vender\contract\ResponseInterface;
 
-class AfterMiddleware extends BaseMiddleware
+class AfterMiddleware extends AfterBaseMiddleware
 {
-    public function handle(RequestInterface $request)
+    public function handle(ResponseInterface $response)
     {
         var_dump("After Middle");
 
         if($this->next_node){
-            $this->next_node->handle($request);
+            $this->next_node->handle($response);
         }
     }
 }

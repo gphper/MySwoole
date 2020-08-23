@@ -14,4 +14,6 @@
 
 ### 经验总结
 * [php自动加载类](https://www.cnblogs.com/itsuibi/p/13340368.html)
+* [路由器的实现](https://www.cnblogs.com/itsuibi/p/13532308.html)
+* [责任链模式实现中间件](https://www.cnblogs.com/itsuibi/p/13549378.html)
 
